@@ -74,7 +74,7 @@ export class UserList extends Component {
             this.pagination.totalRecords = response['recordsTotal'];
             this.pagination.recordsPerPage = this.records;
             this.pagination.currentPage = this.currentPage;
-
+            
             response.data.map(userData => {
                 const User = customElements.get('ta-user');
                 const user = new User();
@@ -89,7 +89,11 @@ export class UserList extends Component {
                 user.enabled = userData['enabled'];
 
                 this.list.appendChild(user);
+                
             });
         });
+
+        
+
     }
 }

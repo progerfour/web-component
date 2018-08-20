@@ -1,0 +1,16 @@
+:host {
+    display: block;
+    width: 50%;
+    float: right;
+    border: 1px solid white;
+    cursor: pointer;
+    box-sizing: border-box;
+    background-color: rgb(146, 204, 70);
+}
+
+#user-id {
+    color: #8d1d1d;
+    float: left;
+    margin-right: 5px;
+}
+

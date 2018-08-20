@@ -19,8 +19,8 @@ export class Component extends HTMLElement {
     _addEventListener(query, eventType, callback, isShadowRoot) {
         const root = isShadowRoot ? this.shadowRoot : this;
 
-        const handler = event => {
-            const target = event.target;
+        const handler = event => { //handler обработчик 
+            const target = event.target; 
             const element = target.closest(query);
 
             if (!element) return;

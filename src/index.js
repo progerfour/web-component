@@ -2,7 +2,9 @@ import { Layout } from './layout/layout';
 import { Pagination } from './pagination/pagination';
 import { User } from './user/user';
 import { UserList } from './user-list/user-list';
+import { Transaction } from './transaction/transaction'
 import { UserService } from './user-service';
+
 
 import './index.css';
 
@@ -13,6 +15,9 @@ customElements.define('ta-layout', Layout);
 customElements.define('ta-pagination', Pagination);
 
 customElements.define('ta-user', User);
+
+customElements.define('ta-transaction', Transaction);
+
 
 UserList.userService = userService;
 customElements.define('ta-user-list', UserList);
