@@ -4,7 +4,7 @@ import { User } from './user/user';
 import { UserList } from './user-list/user-list';
 import { Transaction } from './transaction/transaction'
 import { UserService } from './user-service';
-
+import { TransactionList } from './transaction-list/transaction-list'
 
 import './index.css';
 
@@ -20,4 +20,6 @@ customElements.define('ta-transaction', Transaction);
 
 
 UserList.userService = userService;
+TransactionList.userService = userService;
 customElements.define('ta-user-list', UserList);
+customElements.define('ta-transaction-list', TransactionList);

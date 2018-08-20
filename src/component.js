@@ -23,9 +23,10 @@ export class Component extends HTMLElement {
             const target = event.target; 
             const element = target.closest(query);
 
-            if (!element) return;
+            if (!element) { console.log("пошел нафиг");return}; 
 
             if (!root.contains(element)) return;
+
 
             callback = callback.bind(this);
 
