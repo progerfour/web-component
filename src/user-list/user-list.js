@@ -78,7 +78,8 @@ export class UserList extends Component {
             response.data.map(userData => {
                 const User = customElements.get('ta-user');
                 const user = new User();
-
+                
+                user.id = userData['user_id'];
                 user.name = userData['user_name'];
                 user.custom = userData['user_custom'];
                 user.balance = userData['balance'];

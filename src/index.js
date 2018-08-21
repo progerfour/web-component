@@ -20,6 +20,7 @@ customElements.define('ta-transaction', Transaction);
 
 
 UserList.userService = userService;
-TransactionList.userService = userService;
 customElements.define('ta-user-list', UserList);
+
+TransactionList.userService = userService;
 customElements.define('ta-transaction-list', TransactionList);

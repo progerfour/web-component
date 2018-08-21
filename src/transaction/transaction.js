@@ -8,18 +8,18 @@ export class Transaction extends Component {
         super();
         this.attachTemplate(template, style);
         this.bindPropertiesToElements([
-            'operation_id',
-            'transaction_id',
-            'coupon_id',
-            'coupon_code',
-            'transaction_type',
+            'operationId',
+            'transactionId',
+            'couponId',
+            'couponCode',
+            'transactionType',
             'comment',
             'date',
             'amount',
-            'user_balance',
+            'userBalance',
             'sum',
             'currency',
-            'user_id',
+            'userId',
             'status'
         ]);
         this.bindPropertiesToAttributes([
