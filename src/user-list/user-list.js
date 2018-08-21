@@ -38,6 +38,18 @@ export class UserList extends Component {
         return (this.currentPage - 1) * this.records;
     }
 
+    get selectedUser(){
+        console.log("UserList.GETselectedUser");
+        return this._selectedUser;
+
+    }
+
+    set selectedUser(value){
+        console.log("UserList.SETselectedUser");
+        this._selectedUser = value;
+    }
+
+
     constructor() {
         super();
         this.attachTemplate(template, style);
@@ -59,7 +71,12 @@ export class UserList extends Component {
     select(event, user) {
         this.users.map(user => user.classList.remove('selected'));
         user.classList.add('selected');
+        this.selectedUser = user;
+        this.dispatchEvent(new Event('userSelected', {bubbles: true, composed: true}));
+        
     }
+
+    
 
     emptyList() {
         while (this.list.hasChildNodes()) {
@@ -78,7 +95,7 @@ export class UserList extends Component {
             response.data.map(userData => {
                 const User = customElements.get('ta-user');
                 const user = new User();
-                
+
                 user.id = userData['user_id'];
                 user.name = userData['user_name'];
                 user.custom = userData['user_custom'];

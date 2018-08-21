@@ -24,3 +24,14 @@ customElements.define('ta-user-list', UserList);
 
 TransactionList.userService = userService;
 customElements.define('ta-transaction-list', TransactionList);
+
+
+document.addEventListener("DOMContentLoaded", ()=>{
+    const transactionlist = document.querySelector('ta-transaction-list'); 
+
+    const userlist = document.querySelector('ta-user-list');
+    
+    window.addEventListener('userSelected', (event) => {
+        transactionlist.user = userlist.selectedUser;
+    });
+});

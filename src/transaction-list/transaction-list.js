@@ -45,7 +45,19 @@ export class TransactionList extends Component {
         this.currentPage = 1;
         this.addShadowEventListener('ta-user', 'click', this.select);
         this.addShadowEventListener('ta-pagination', 'change', this.changePage);
+        this.user = null;
+        
     }
+
+    set user(value) {
+        this._user = value;
+        this.renderList();
+    }
+
+    get user() {
+        return this._user;
+    }
+
 
     connectedCallback() {
         this.renderList();
@@ -69,41 +81,32 @@ export class TransactionList extends Component {
 
     renderList() {
         this.emptyList();
+        if (!this.user) return;
+        let dataFrom = new Date(this.user.registerDate);
+        let dataTo = new Date();
+        TransactionList.userService.getTransactions(this.user.id, dataFrom, dataTo).then(response => {
+            response.map(transactionData => {
+                const Transaction = customElements.get('ta-transaction');
+                const transaction = new Transaction();
 
-        TransactionList.userService.getUsers(this.offset, this.records).then(response => {
-            let totalRecords =  response['recordsTotal']
+                transaction.operationId = transactionData['operation_id'];
+                transaction.transactionId = transactionData['transaction_id'];
+                transaction.couponId = transactionData['coupon_id'];
+                transaction.couponCode = transactionData['coupon_code'];
+                transaction.transactionType = transactionData['transaction_type'];
+                transaction.comment = transactionData['comment'];
+                transaction.date = new Date(transactionData['date']);
+                transaction.amount = transactionData['amount'];
+                transaction.userBalance = transactionData['user_balance'];
+                transaction.sum = transactionData['sum'];
+                transaction.currency = transactionData['currency'];
+                transaction.userId = transactionData['user_id'];
+                transaction.status = transactionData['status'];
 
-            response.data.map(userData => {
-                let userId = userData['user_id'];
-              /*  this.pagination.totalRecords = totalRecords;
-                this.pagination.recordsPerPage = this.records;
-                this.pagination.currentPage = this.currentPage;*/
 
-                TransactionList.userService.getTransactions(userId, new Date(0)).then(response => {        
-                    response.map(transactionData => {
-                        const Transaction = customElements.get('ta-transaction');
-                        const transaction = new Transaction();
-        
-                        transaction.operationId = transactionData['operation_id'];
-                        transaction.transactionId = transactionData['transaction_id'];
-                        transaction.couponId = transactionData['coupon_id'];
-                        transaction.couponCode = transactionData['coupon_code'];
-                        transaction.transactionType = transactionData['transaction_type'];
-                        transaction.comment = transactionData['comment'];
-                        transaction.date = new Date(transactionData['date']);
-                        transaction.amount = transactionData['amount'];
-                        transaction.userBalance = transactionData['user_balance'];
-                        transaction.sum = transactionData['sum'];
-                        transaction.currency = transactionData['currency'];
-                        transaction.userId = transactionData['user_id'];
-                        transaction.status = transactionData['status'];
-                        
-        
-                        this.list.appendChild(transaction);
-                    });
-                });
-            })
-        })
+                this.list.appendChild(transaction);
+            });
+        });
 
     }
 }
