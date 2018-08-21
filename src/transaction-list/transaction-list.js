@@ -81,7 +81,10 @@ export class TransactionList extends Component {
 
     renderList() {
         this.emptyList();
-        if (!this.user) return;
+        if (!this.user){ 
+           
+            return;
+        }
         let dataFrom = new Date(this.user.registerDate);
         let dataTo = new Date();
         TransactionList.userService.getTransactions(this.user.id, dataFrom, dataTo).then(response => {

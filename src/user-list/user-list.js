@@ -39,13 +39,11 @@ export class UserList extends Component {
     }
 
     get selectedUser(){
-        console.log("UserList.GETselectedUser");
         return this._selectedUser;
 
     }
 
     set selectedUser(value){
-        console.log("UserList.SETselectedUser");
         this._selectedUser = value;
     }
 
@@ -66,6 +64,8 @@ export class UserList extends Component {
     changePage(event) {
         this.currentPage = event.detail.page;
         this.renderList();
+        this.selectedUser = null;
+        this.dispatchEvent(new Event('userSelected', {bubbles: true, composed: true}));
     }
 
     select(event, user) {
@@ -75,8 +75,6 @@ export class UserList extends Component {
         this.dispatchEvent(new Event('userSelected', {bubbles: true, composed: true}));
         
     }
-
-    
 
     emptyList() {
         while (this.list.hasChildNodes()) {
