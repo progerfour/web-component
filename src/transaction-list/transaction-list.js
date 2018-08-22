@@ -2,6 +2,8 @@ import { Component } from '../component';
 
 import style from './transaction-list.css';
 import template from './transaction-list.html';
+import {createTemplate} from '../htmlCssService';
+var design = createTemplate(template, style);
 
 let dependencies = {};
 
@@ -40,7 +42,7 @@ export class TransactionList extends Component {
 
     constructor() {
         super();
-        this.attachTemplate(template, style);
+        this.attachTemplate(design);
         this.records = 20;
         this.currentPage = 1;
         this.addShadowEventListener('ta-user', 'click', this.select);

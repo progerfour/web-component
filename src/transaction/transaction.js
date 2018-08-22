@@ -2,11 +2,13 @@ import { Component } from '../component';
 
 import style from './transaction.css';
 import template from './transaction.html';
+import {createTemplate} from '../htmlCssService';
+var design = createTemplate(template, style);
 
 export class Transaction extends Component {
     constructor() {
         super();
-        this.attachTemplate(template, style);
+        this.attachTemplate(design);
         this.bindPropertiesToElements([
             'operationId',
             'transactionId',

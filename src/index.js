@@ -5,8 +5,10 @@ import { UserList } from './user-list/user-list';
 import { Transaction } from './transaction/transaction'
 import { UserService } from './user-service';
 import { TransactionList } from './transaction-list/transaction-list'
+import './htmlCssService';
 
 import './index.css';
+
 
 const userService = new UserService('https://livedemo.xsolla.com/fe/test-task/baev/users');
 

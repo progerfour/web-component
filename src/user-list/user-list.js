@@ -2,8 +2,10 @@ import { Component } from '../component';
 
 import style from './user-list.css';
 import template from './user-list.html';
-
+import {createTemplate} from '../htmlCssService';
+var design = createTemplate(template, style);
 let dependencies = {};
+
 
 export class UserList extends Component {
     static get userService() {
@@ -50,7 +52,7 @@ export class UserList extends Component {
 
     constructor() {
         super();
-        this.attachTemplate(template, style);
+        this.attachTemplate(design);
         this.records = 20;
         this.currentPage = 1;
         this.addShadowEventListener('ta-user', 'click', this.select);

@@ -3,6 +3,8 @@ import * as ultimatePagination  from 'ultimate-pagination';
 
 import style from './pagination.css';
 import template from './pagination.html';
+import {createTemplate} from '../htmlCssService';
+var design = createTemplate(template, style);
 
 export class Pagination extends Component {
     get totalPages() {
@@ -23,7 +25,7 @@ export class Pagination extends Component {
 
     constructor() {
         super();
-        this.attachTemplate(template, style);
+        this.attachTemplate(design);
         this.bindPropertiesToAttributes([
             'currentPage',
             'recordsPerPage',

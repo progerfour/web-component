@@ -9,18 +9,9 @@ export class Component extends HTMLElement {
         return string.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
     }
 
-    attachTemplate(template, style) {
-        style = style ? '<style>' + style + '</style>' : '';
-
-        const shadowRoot = this.attachShadow({mode: 'open'});
-        shadowRoot.innerHTML = style + template;
-        //заменить InnerHtml на appendChild
-        //innerHtml вынести 
-    }
-
     
 
-    attachTemplate2(elem){
+    attachTemplate(elem){
 
         const shadowRoot = this.attachShadow({mode: 'open'});
         shadowRoot.appendChild(elem.content.cloneNode(true));
