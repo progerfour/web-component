@@ -40,15 +40,6 @@ export class UserList extends Component {
         return (this.currentPage - 1) * this.records;
     }
 
-    get selectedUser(){
-        return this._selectedUser;
-
-    }
-
-    set selectedUser(value){
-        this._selectedUser = value;
-    }
-
 
     constructor() {
         super();

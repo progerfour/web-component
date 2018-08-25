@@ -34,6 +34,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
     const userlist = document.querySelector('ta-user-list');
     
     window.addEventListener('userSelected', (event) => {
-        transactionlist.user = userlist.selectedUser;
+        transactionlist.user = userlist.selectedUser.id;
     });
 });
